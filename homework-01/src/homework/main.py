@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 from homework.hashing import calculate_hashes
 from homework.mail import format_result_body, send_email
-from homework.report import build_report
+from homework.report import build_report, types_report
 
 
 def main() -> None:
@@ -24,13 +24,12 @@ def main() -> None:
 
     report = build_report(full_name)
     md5_hex, sha256_hex = calculate_hashes(report)
-    print(report)
-    print(md5_hex)
-    print(sha256_hex)
+    body = format_result_body(full_name, md5_hex, sha256_hex, types_report())
+    print(body)
 
     send_email(
         subject="Homework 01",
-        body=format_result_body(full_name, md5_hex, sha256_hex),
+        body=body,
         to_email=to_email,
         from_email=from_email,
         password=password,

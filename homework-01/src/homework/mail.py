@@ -4,15 +4,18 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-def format_result_body(full_name: str, md5_hex: str, sha256_hex: str) -> str:
+def format_result_body(
+    full_name: str,
+    md5_hex: str,
+    sha256_hex: str,
+    types_section: str,
+) -> str:
     return (
         f"ФИО: {full_name}\n"
+        f"MD5:{md5_hex}\n"
+        f"SHA-256:{sha256_hex}\n"
         f"\n"
-        f"MD5:\n"
-        f"{md5_hex}\n"
-        f"\n"
-        f"SHA-256:\n"
-        f"{sha256_hex}"
+        f"{types_section}"
     )
 
 

@@ -1,4 +1,4 @@
-from homework.report import _format_value, build_report, format_typed_line, sample_values
+from homework.report import build_report, format_value_block, sample_values, types_report
 
 
 def test_sample_values_has_all_eight_types():
@@ -6,23 +6,51 @@ def test_sample_values_has_all_eight_types():
     assert types == {int, float, bool, str, list, tuple, set, dict}
 
 
-def test_build_report_appends_full_name():
+def test_types_report_format():
+    report = types_report()
+    assert report == (
+        "Отчет по первой лабораторной работе:\n"
+        "Демонстрация встроенных типов данных Python\n"
+        "\n"
+        "- Тип: <class 'int'>\n"
+        "- Значение: 42\n"
+        "------------------\n"
+        "- Тип: <class 'float'>\n"
+        "- Значение: 3.14\n"
+        "------------------\n"
+        "- Тип: <class 'bool'>\n"
+        "- Значение: True\n"
+        "------------------\n"
+        "- Тип: <class 'str'>\n"
+        "- Значение: python\n"
+        "------------------\n"
+        "- Тип: <class 'list'>\n"
+        "- Значение: [1, 2, 3]\n"
+        "------------------\n"
+        "- Тип: <class 'tuple'>\n"
+        "- Значение: ('a', 'b')\n"
+        "------------------\n"
+        "- Тип: <class 'set'>\n"
+        "- Значение: {1, 2, 3}\n"
+        "------------------\n"
+        "- Тип: <class 'dict'>\n"
+        "- Значение: {'course': 'python', 'homework': 1}\n"
+        "------------------"
+    )
+
+
+def test_build_report_prepends_full_name():
     full_name = "Иванов Иван Иванович"
     report = build_report(full_name)
-    typed_lines = [format_typed_line(value) for value in sample_values()]
-    assert report == "\n".join(typed_lines) + f"\n{full_name}"
-    assert report.endswith(full_name)
+    assert report == f"ФИО: {full_name}\n\n{types_report()}"
 
 
 def test_build_report_empty_name_has_no_extra_line():
     report = build_report("")
-    typed_lines = [format_typed_line(value) for value in sample_values()]
-    assert report == "\n".join(typed_lines)
-    assert not report.endswith("\n")
+    assert report == types_report()
+    assert not report.startswith("ФИО:")
 
 
 def test_string_set_formatted_stably():
     value = {"python", "course", "homework"}
-    expected = "{'course', 'homework', 'python'}"
-    assert _format_value(value) == expected
-    assert format_typed_line(value).startswith(expected + " ")
+    assert "- Значение: {'course', 'homework', 'python'}" in format_value_block(value)
