@@ -17,6 +17,18 @@ python -m homework.main
 deactivate
 ```
 
+## Почта
+
+Письмо уходит через Яндекс SMTP (`smtp.yandex.ru:465`). Пароль и адрес отправителя читаются из `.env`, в Git файл не попадает.
+
+```
+YANDEX_EMAIL=your_email@yandex.ru
+YANDEX_APP_PASSWORD=пароль_приложения
+TO_EMAIL=mibelousov@edu.hse.ru
+```
+
+Обычный пароль от Яндекса не подойдёт: нужен [пароль приложения](https://id.yandex.ru/security/app-passwords). Если переменных нет, программа спросит их в консоли (пароль — скрытый ввод).
+
 
 
 ## Зачем `__init__.py`
