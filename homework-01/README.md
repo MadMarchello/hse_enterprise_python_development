@@ -8,8 +8,24 @@
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
+pip install -r requirements.txt
 python -m homework.main
 ```
+
+### Отключение venv 
+```bash
+deactivate
+```
+
+
+
+## Зачем `__init__.py`
+
+Файл `src/homework/__init__.py` в этом проекте пустой: логики в нём нет.
+
+Исторически Python считал пакетом только каталог, в котором есть `__init__.py`. Без него `import homework` не работал. С Python 3.3 (PEP 420) каталог может быть namespace package и без этого файла; у нас пакет и так находится через `src` и `pip install -e .`.
+
+Пустой `__init__.py` оставлен как явный маркер пакета и требование структуры задания, а не как часть программы.
 
 ## Стабильный вывод `set`
 

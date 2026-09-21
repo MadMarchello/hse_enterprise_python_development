@@ -1,6 +1,3 @@
-import os
-
-
 def sample_values():
     return [
         42,
@@ -25,9 +22,8 @@ def format_typed_line(value) -> str:
     return f"{_format_value(value)} {type(value)}"
 
 
-def build_report() -> str:
+def build_report(full_name: str) -> str:
     report = "\n".join(format_typed_line(value) for value in sample_values())
-    full_name = os.getenv("FULL_NAME", "")
     if not full_name:
         return report
     return f"{report}\n{full_name}"
