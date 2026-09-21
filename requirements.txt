@@ -1,0 +1,2 @@
+-e git+https://github.com/MadMarchello/hse_enterprise_python_development.git@e1b0f437f778800048eb1e56298a9b427e938183#egg=homework&subdirectory=homework-01
+python-dotenv==1.2.3

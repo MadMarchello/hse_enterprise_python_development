@@ -12,6 +12,14 @@ pip install -r requirements.txt
 python -m homework.main
 ```
 
+## Тесты
+
+```bash
+pytest -q
+```
+
+Покрытие модулей `homework` включается само: `--cov` задан в `pyproject.toml` (`addopts`).
+
 ### Отключение venv 
 ```bash
 deactivate
