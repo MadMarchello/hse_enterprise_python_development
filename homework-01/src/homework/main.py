@@ -1,5 +1,8 @@
+from homework.report import build_report
+
+
 def main() -> None:
-    pass
+    print(build_report())
 
 
 if __name__ == "__main__":
