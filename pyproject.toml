@@ -1,0 +1,24 @@
+[project]
+name = "hse-enterprise-python"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "report-maile",
+    "dog-classifier",
+]
+
+[tool.uv.sources]
+report-maile = { workspace = true }
+dog-classifier = { workspace = true }
+
+# Корневой pyproject — не пакет, а точка сборки всего репозитория.
+# Команды: uv sync (создать .venv со всеми зависимостями),
+# uv run pytest -q (запуск из корня).
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["report_mailer", "dog_classifier"]
+
+[dependency-groups]
+dev = ["pytest", "pytest-cov"]
