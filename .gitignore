@@ -28,3 +28,9 @@ __pycache__/
 artifacts/*
 !artifacts/.gitkeep
 
+# Секреты и локальные настройки
+.env
+
+# Датасет при дефолтном пути (без DOG_DATA_DIR)
+data/
+

@@ -1,5 +1,6 @@
 import os
 from getpass import getpass
+from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -7,9 +8,12 @@ from report_maile.hashing import calculate_hashes
 from report_maile.mail import format_result_body, send_email
 from report_maile.report import build_report, types_report
 
+# .env лежит в корне репозитория: main.py -> report_maile -> src -> report_mailer -> корень.
+REPO_ROOT = Path(__file__).resolve().parents[3]
+
 
 def main() -> None:
-    env_loaded = load_dotenv()
+    env_loaded = load_dotenv(REPO_ROOT / ".env")
     full_name = os.getenv("FULL_NAME", "").strip()
     if not env_loaded or not full_name:
         full_name = input("Введите ФИО: ").strip()

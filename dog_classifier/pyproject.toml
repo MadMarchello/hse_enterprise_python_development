@@ -11,6 +11,7 @@ dependencies = [
     "torchvision",
     "pillow",
     "matplotlib",
+    "python-dotenv",
 ]
 
 [tool.setuptools]
