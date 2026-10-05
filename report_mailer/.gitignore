@@ -1,0 +1,10 @@
+# Секреты
+.env
+
+# Артефакты сборки и тестов пакета
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/

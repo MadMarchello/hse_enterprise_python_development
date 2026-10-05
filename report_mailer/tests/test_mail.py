@@ -1,7 +1,7 @@
 from email import message_from_string
 from unittest.mock import patch
 
-from homework.mail import format_result_body, send_email
+from report_maile.mail import format_result_body, send_email
 
 
 def test_format_result_body_contains_name_hashes_and_types_report():
@@ -67,7 +67,7 @@ def test_send_email_logs_in_and_sends_without_network():
         servers.append(server)
         return server
 
-    with patch("homework.mail.smtplib.SMTP_SSL", fake_smtp):
+    with patch("report_maile.mail.smtplib.SMTP_SSL", fake_smtp):
         send_email(
             subject="Homework 01",
             body="result-body",

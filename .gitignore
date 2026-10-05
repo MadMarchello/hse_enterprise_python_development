@@ -16,3 +16,21 @@
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.coverage
+
+# Артефакты (веса моделей и т.п.) — папка есть в репо, содержимое нет
+artifacts/*
+!artifacts/.gitkeep
+
+# Секреты и локальные настройки
+.env
+
+# Датасет при дефолтном пути (без DOG_DATA_DIR)
+data/
+

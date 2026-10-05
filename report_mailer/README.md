@@ -1,4 +1,4 @@
-# Homework 01
+# report_maile (Homework 01)
 
 Проект по дисциплине «Промышленное программирование на Python».
 
@@ -9,7 +9,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
 pip install -r requirements.txt
-python -m homework.main
+python -m report_maile.main
 ```
 
 ## Тесты
@@ -18,7 +18,7 @@ python -m homework.main
 pytest -q
 ```
 
-Покрытие модулей `homework` включается само: `--cov` задан в `pyproject.toml` (`addopts`).
+Покрытие модулей `report_maile` включается само: `--cov` задан в `pyproject.toml` (`addopts`).
 
 ### Отключение venv 
 ```bash
@@ -41,9 +41,9 @@ TO_EMAIL=mibelousov@edu.hse.ru
 
 ## Зачем `__init__.py`
 
-Файл `src/homework/__init__.py` в этом проекте пустой: логики в нём нет.
+Файл `src/report_maile/__init__.py` в этом проекте пустой: логики в нём нет.
 
-Исторически Python считал пакетом только каталог, в котором есть `__init__.py`. Без него `import homework` не работал. С Python 3.3 (PEP 420) каталог может быть namespace package и без этого файла; у нас пакет и так находится через `src` и `pip install -e .`.
+Исторически Python считал пакетом только каталог, в котором есть `__init__.py`. Без него `import report_maile` не работал. С Python 3.3 (PEP 420) каталог может быть namespace package и без этого файла; у нас пакет и так находится через `src` и `pip install -e .`.
 
 Пустой `__init__.py` оставлен как явный маркер пакета и требование структуры задания, а не как часть программы.
 
@@ -140,7 +140,7 @@ TO_EMAIL=mibelousov@edu.hse.ru
 
 - Сигнатура `calculate_hashes` и то, что MD5 и SHA-256 берутся из одной последовательности байтов.
 - Эталоны в `tests/test_hashing.py` совпали с `printf '%s' … | openssl dgst` для `hello`, пустой строки и `привет`.
-- `pytest -q` не ходит в сеть: SMTP подменён, живое письмо остаётся ручным шагом `python -m homework.main`.
+- `pytest -q` не ходит в сеть: SMTP подменён, живое письмо остаётся ручным шагом `python -m report_maile.main`.
 - Пароль не зашит в код: он берётся из `.env` или из `getpass`, а `.env` есть в `.gitignore`.
 
 ### Неточность в ответе модели

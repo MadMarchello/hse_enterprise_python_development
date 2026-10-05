@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from unittest.mock import patch
 
-from homework.main import main
+from report_maile.main import main
 
 
 @dataclass
@@ -66,12 +66,12 @@ class _MainCalls:
 def _run_main(calls: _MainCalls, env: dict[str, str]) -> None:
     with (
         patch.dict("os.environ", env, clear=False),
-        patch("homework.main.load_dotenv", calls.load_dotenv),
-        patch("homework.main.build_report", calls.build_report),
-        patch("homework.main.calculate_hashes", calls.calculate_hashes),
-        patch("homework.main.send_email", calls.send_email),
-        patch("homework.main.input", calls.read_input),
-        patch("homework.main.getpass", calls.read_password),
+        patch("report_maile.main.load_dotenv", calls.load_dotenv),
+        patch("report_maile.main.build_report", calls.build_report),
+        patch("report_maile.main.calculate_hashes", calls.calculate_hashes),
+        patch("report_maile.main.send_email", calls.send_email),
+        patch("report_maile.main.input", calls.read_input),
+        patch("report_maile.main.getpass", calls.read_password),
     ):
         main()
 

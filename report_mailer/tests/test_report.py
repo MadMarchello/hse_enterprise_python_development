@@ -1,4 +1,4 @@
-from homework.report import build_report, format_value_block, sample_values, types_report
+from report_maile.report import build_report, format_value_block, sample_values, types_report
 
 
 def test_sample_values_has_all_eight_types():
