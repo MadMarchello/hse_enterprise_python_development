@@ -24,3 +24,7 @@ __pycache__/
 .ipynb_checkpoints/
 .coverage
 
+# Артефакты (веса моделей и т.п.) — папка есть в репо, содержимое нет
+artifacts/*
+!artifacts/.gitkeep
+

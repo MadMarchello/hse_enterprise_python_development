@@ -14,7 +14,10 @@ else:
     device = torch.device("cpu")
 
 image_path = Path("photos/Beagle_1.jpg")
-checkpoint_path = Path("dog_breeds_v2.pth")
+# Веса лежат в artifacts/ в корне репозитория — независимо от cwd запуска.
+repo_root = Path(__file__).resolve().parent.parent
+checkpoint_path = repo_root / "artifacts" / "dog_breeds_v2.pth"
+checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
 
 print("device:", device)
 print("фото:", image_path.resolve())
